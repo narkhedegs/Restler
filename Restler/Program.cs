@@ -69,22 +69,83 @@ namespace Restler
                     }
                 }
             }
+
+            Console.WriteLine("Executing Collection - " + beforeCollectionRunEventArgs.Collection.Name);
         }
 
         private static void CollectionRunnerOnBeforeRequestRun(object sender,
             BeforeRequestRunEventArgs beforeRequestRunEventArgs)
         {
-            Console.WriteLine(beforeRequestRunEventArgs.Request.Url.Path);
+            var beforeRequestRunAddIns = _serviceProvider.GetAll<IBeforeRequestRunAddIn>().ToList();
+            if (beforeRequestRunAddIns.Any())
+            {
+                foreach (var beforeRequestRunAddIn in beforeRequestRunAddIns)
+                {
+                    var addInConfigurationSection =
+                        _restlerConfiguration.AddIns.FirstOrDefault(
+                            section => String.Equals(section.Name, beforeRequestRunAddIn.GetType().Name, StringComparison.CurrentCultureIgnoreCase));
+                    if (addInConfigurationSection != null)
+                    {
+                        beforeRequestRunAddIn.Execute(
+                                addInConfigurationSection.Configuration,
+                                beforeRequestRunEventArgs.Request,
+                                beforeRequestRunEventArgs.Environment,
+                                beforeRequestRunEventArgs.RestClient);
+                    }
+                }
+            }
+
+            Console.WriteLine("Executing Request - " + beforeRequestRunEventArgs.Request.Url.Path);
         }
 
         private static void CollectionRunnerOnAfterRequestRun(object sender,
             AfterRequestRunEventArgs afterRequestRunEventArgs)
         {
+            var afterRequestRunAddIns = _serviceProvider.GetAll<IAfterRequestRunAddIn>().ToList();
+            if (afterRequestRunAddIns.Any())
+            {
+                foreach (var afterRequestRunAddIn in afterRequestRunAddIns)
+                {
+                    var addInConfigurationSection =
+                        _restlerConfiguration.AddIns.FirstOrDefault(
+                            section => String.Equals(section.Name, afterRequestRunAddIn.GetType().Name, StringComparison.CurrentCultureIgnoreCase));
+                    if (addInConfigurationSection != null)
+                    {
+                        afterRequestRunAddIn.Execute(
+                                addInConfigurationSection.Configuration,
+                                afterRequestRunEventArgs.Response,
+                                afterRequestRunEventArgs.Environment,
+                                afterRequestRunEventArgs.RestClient);
+                    }
+                }
+            }
+
+            Console.WriteLine("Finished Executing Request - " + afterRequestRunEventArgs.Response.Request.Url.Path + " - With status " + afterRequestRunEventArgs.Response.StatusCode);
         }
 
         private static void CollectionRunnerOnAfterCollectionRun(object sender,
             AfterCollectionRunEventArgs afterCollectionRunEventArgs)
         {
+            var afterCollectionRunAddIns = _serviceProvider.GetAll<IAfterCollectionRunAddIn>().ToList();
+            if (afterCollectionRunAddIns.Any())
+            {
+                foreach (var afterCollectionRunAddIn in afterCollectionRunAddIns)
+                {
+                    var addInConfigurationSection =
+                        _restlerConfiguration.AddIns.FirstOrDefault(
+                            section => String.Equals(section.Name, afterCollectionRunAddIn.GetType().Name, StringComparison.CurrentCultureIgnoreCase));
+                    if (addInConfigurationSection != null)
+                    {
+                        afterCollectionRunAddIn.Execute(
+                                addInConfigurationSection.Configuration,
+                                afterCollectionRunEventArgs.CollectionRunResult,
+                                afterCollectionRunEventArgs.Environment,
+                                afterCollectionRunEventArgs.RestClient);
+                    }
+                }
+            }
+
+            Console.WriteLine("Finished Executing Collection - " + afterCollectionRunEventArgs.CollectionRunResult.Collection.Name);
         }
     }
 }

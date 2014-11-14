@@ -13,6 +13,7 @@ namespace Restler
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (reader.TokenType == JsonToken.Null) return null;
             var jObject = JObject.Load(reader);
             return jObject.ToString(Formatting.None);
         }

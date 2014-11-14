@@ -24,7 +24,8 @@ namespace Restler
                 scanner =>
                     scanner.FromAssembliesInPath(AppDomain.CurrentDomain.BaseDirectory)
                         .SelectAllClasses()
-                        .BindAllInterfaces());
+                        .BindAllInterfaces()
+                        .Configure(configuration => configuration.InSingletonScope()));
 
             var defaultAddInsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AddIns");
             if (Directory.Exists(defaultAddInsDirectory))
@@ -35,7 +36,10 @@ namespace Restler
                     var directory = directoryInfo;
                     _kernel.Bind(
                         scanner =>
-                            scanner.FromAssembliesInPath(directory.FullName).SelectAllClasses().BindAllInterfaces());
+                            scanner.FromAssembliesInPath(directory.FullName)
+                                .SelectAllClasses()
+                                .BindAllInterfaces()
+                                .Configure(configuration => configuration.InSingletonScope()));
                 }
             }
         }
