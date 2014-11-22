@@ -6,6 +6,8 @@ Restler is a command-line collection runner for applications like DevHttpClient 
 
  - [Installation](#installation)
  - [AddIns](#addins)
+ - [Running a Rest Request Collection](#running-a-rest-request-collection)
+ - [Options](#options)
  - [Available AddIns](#available-addins)
 
 ## Installation
@@ -23,7 +25,7 @@ Restler is a Tool Only nuget package.
 
 ### Install from a zip file
 
-You can also install Restler by downloading a zip file from here and extracting it at the desired location on your computer.
+You can also install Restler by downloading a zip file from [here](https://drive.google.com/file/d/0B1en8SOjvkGZWFE5eExUYnZzMXM/view?usp=sharing) and extracting it at the desired location on your computer.
 
 ### What's Included
 
@@ -60,6 +62,99 @@ Run the help command again and you will see that the Restler command line interf
 
 Check out the list of all the available AddIns [here](#available-addins).
 
+## Running a Rest Request Collection
+
+In this section we will see how to run a Rest Request Collection like Dev Http Client Repository JSON file. Procedure for running a Rest Request Collection should be similar for other collections like Postman or any other custom collection that you may have.
+
+We have a simple Dev Http Client Repository to test Reddit API.
+
+![alt text](http://i.imgur.com/jd4xQ2b.png "restler simple dhc rest request collection")
+
+We can get follwoing JSON file after exporting this collection to JSON. Save this JSON file as reddit-collection.json.
+```json
+{
+  "version": 3,
+  "nodes": [
+    {
+      "id": "8CB601B3-4088-41E6-869D-DE31FEEB717B",
+      "lastModified": "2014-11-21T16:51:57.860-05:00",
+      "name": "Reddit",
+      "type": "Project"
+    },
+    {
+      "id": "AED2FBFA-9C76-4760-AFDF-E1029D0C7627",
+      "lastModified": "2014-11-21T16:50:59.108-05:00",
+      "name": "Get Hot ",
+      "headers": [],
+      "method": {
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "www.reddit.com/r/hot.json",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8CB601B3-4088-41E6-869D-DE31FEEB717B"
+    },
+    {
+      "id": "AFE055DF-5F7B-42D9-9B54-62A7F25029CA",
+      "lastModified": "2014-11-21T16:51:57.861-05:00",
+      "name": "Get Top for C#",
+      "headers": [],
+      "method": {
+        "link": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3",
+        "name": "GET"
+      },
+      "body": {
+        "autoSetLength": true,
+        "bodyType": "Text"
+      },
+      "headersType": "Form",
+      "type": "Request",
+      "uri": {
+        "path": "www.reddit.com/r/csharp/top.json",
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        }
+      },
+      "parentId": "8CB601B3-4088-41E6-869D-DE31FEEB717B"
+    }
+  ]
+}
+```
+Type following command in the command prompt to run our reddit collection using Restler. Please refer to the [Options](#options) section in this documentation to learn about all the command line options available for Restler.
+```cmd
+restler -c reddit-collection.json --parser DevHttpClientRepositoryParser
+```
+Restler will run all the REST Requests in reddit-collection.json file. You should see an output similar to the following screenshot.
+
+![alt text](http://i.imgur.com/I2uAbr7.png "restler simple collection run output")
+
+## Options
+
+```text
+Options:
+
+  -c, --collection     Specify path to REST Request Collection file.
+
+  --parser             Specify parser for parsing collection file.
+
+  --configuration      Specify configuration as a JSON file.
+
+  -e, --environment    Specify one of the environments in your configuration.
+
+  -h, --help           Display this help screen.
+```
 
 ## Available AddIns
 
