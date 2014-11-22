@@ -9,6 +9,7 @@ Restler is a command-line collection runner for applications like DevHttpClient 
  - [Running a Rest Request Collection](#running-a-rest-request-collection)
  - [Options](#options)
  - [Available AddIns](#available-addins)
+ - [To Do](#to-do)
 
 ## Installation
 
@@ -160,3 +161,12 @@ Options:
 
  - [RestApiTester.Parsers.DevHttpClientRepositoryParser ](https://www.nuget.org/packages/RestApiTester.Parsers.DevHttpClientRepositoryParser/)
  - [RestApiTester.AddIns.BasicAuthenticationAddIn](https://www.nuget.org/packages/RestApiTester.AddIns.BasicAuthenticationAddIn/)
+
+## To Do
+
+ - Complete the documentation. Write documentation about the configuration file.
+ - Remove some dependencies like FluentValidation, Ninject and Command Line Parser.
+ - Use ILMerge to create a single executable file for Restler.
+ - Create HTML Report Generator Add In.
+ - Create TFS Integration Add In.
+ - Write parser for Postman collection.
