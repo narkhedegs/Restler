@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>restler</id>
-        <version>0.1.0.0</version>
+        <version>0.1.0</version>
         <title>Restler</title>
         <authors>Gaurav Narkhede</authors>
         <owners>Gaurav Narkhede</owners>
@@ -17,26 +17,6 @@
         <dependencies />
     </metadata>
     <files>
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net20\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net20\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net20\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net20\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net35\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net35\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net35\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net35\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\netcore45\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\netcore45\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\netcore45\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\netcore45\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.xml" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\lib\portable-net45+wp80+win8+wpa81+aspnetcore50\Newtonsoft.Json.xml" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\tools\install.ps1" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\tools\install.ps1" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\Newtonsoft.Json.6.0.6.nupkg" target="AddIns\DevHttpClientRepositoryParser\Newtonsoft.Json.6.0.6\Newtonsoft.Json.6.0.6.nupkg" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\RestApiTester.Common.0.8.0.0\lib\net451\RestApiTester.Common.dll" target="AddIns\DevHttpClientRepositoryParser\RestApiTester.Common.0.8.0.0\lib\net451\RestApiTester.Common.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\RestApiTester.Common.0.8.0.0\RestApiTester.Common.0.8.0.0.nupkg" target="AddIns\DevHttpClientRepositoryParser\RestApiTester.Common.0.8.0.0\RestApiTester.Common.0.8.0.0.nupkg" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0\lib\net451\RestApiTester.Parsers.DevHttpClientRepositoryParser.dll" target="AddIns\DevHttpClientRepositoryParser\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0\lib\net451\RestApiTester.Parsers.DevHttpClientRepositoryParser.dll" />
-        <file src="bin\Debug\AddIns\DevHttpClientRepositoryParser\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0.nupkg" target="AddIns\DevHttpClientRepositoryParser\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0\RestApiTester.Parsers.DevHttpClientRepositoryParser.0.3.0.0.nupkg" />
         <file src="bin\Debug\CommandLine.dll" target="CommandLine.dll" />
         <file src="bin\Debug\FluentValidation.dll" target="FluentValidation.dll" />
         <file src="bin\Debug\Newtonsoft.Json.dll" target="Newtonsoft.Json.dll" />
@@ -47,5 +27,6 @@
         <file src="bin\Debug\Restler.exe" target="Restler.exe" />
         <file src="bin\Debug\RestSharp.dll" target="RestSharp.dll" />
         <file src="bin\Debug\System.IO.Abstractions.dll" target="System.IO.Abstractions.dll" />
+        <file src="bin\Debug\NuGet.Core.dll" target="NuGet.Core.dll" />
     </files>
 </package>

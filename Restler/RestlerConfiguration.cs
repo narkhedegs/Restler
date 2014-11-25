@@ -9,6 +9,7 @@ namespace Restler
         public RestlerConfiguration()
         {
             Environments = new List<Environment>();
+            AddIns = new List<AddIn>();
         }
 
         [JsonProperty("collection")]

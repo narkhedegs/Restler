@@ -15,25 +15,23 @@ Restler is a command-line collection runner for applications like DevHttpClient 
 
 Restler is built on .NET platform using C#. To run Restler, make sure that you have .NET framework version 4.0 or higher installed on your computer.
 
-### Install from nuget
+### Install from chocolatey
 
-The easiest way to install Restler is through nuget. You can install nuget from [here](https://www.nuget.org/). Once the nuget is installed you can type following command at the commnd prompt to install Restler.
+The easiest way to install Restler is through chocolatey. You can install chocolatey from [here](https://chocolatey.org/). Once the chocolatey is installed you can type following command at the commnd prompt to install Restler.
 ```cmd
-nuget install restler
+choco install restler
 ```
-![alt text](http://i.imgur.com/Rerw0ZK.png "restler install from nuget")
-Restler is a Tool Only nuget package.
+![alt text](http://i.imgur.com/h0IDO9q.png "restler install from chocolatey")
 
 ### Install from a zip file
 
-You can also install Restler by downloading a zip file from [here](https://drive.google.com/file/d/0B1en8SOjvkGZWFE5eExUYnZzMXM/view?usp=sharing) and extracting it at the desired location on your computer.
+You can also install Restler by downloading a zip file from [here](https://drive.google.com/file/d/0B1en8SOjvkGZZHdCU0xaRWdyaFE/view?usp=sharing) and extracting it at the desired location on your computer.
 
 ### What's Included
 
 Within the download you'll find the following directories and files. You'll see something like this:
-![alt text](http://i.imgur.com/vhxkVsn.png "restler whats included")
+![alt text](http://i.imgur.com/dmFoXbV.png "restler whats included")
  - Restler.exe is the Restler executable file.
- - AddIns is the directory to install all the AddIns. By default there are no AddIns installed and the AddIns directory is empty. It is very easy to install AddIns. Please refer the AddIns section in this documentation.
  - All other dll files are Restler dependencies.
 
 ## AddIns
@@ -46,20 +44,20 @@ By default there are no AddIns installed. The Command Line Interface of Restler 
 ```cmd
 restler -h
 ```
-![alt text](http://i.imgur.com/eLyqQzg.png "restler help")
+![alt text](http://i.imgur.com/Ic8hhii.png "restler help")
 
-As you can see there are no Parsers or AddIns installed. Only a default RestRequestCollectionRunner is installed which comes with Restler (You can also write your own if you want). Lets install a DevHttpClientRepositoryParser. DevHttpClientRepositoryParser parses the repository JSON file produced by [Dev Http Client Chrome Extension](https://chrome.google.com/webstore/detail/dhc-resthttp-api-client/aejoelaoggembcahagimdiliamlcdmfm?hl=en). You can write your own parsers. To install any AddIn cd in to the AddIns directory and type follwing command from command prompt.
+As you can see there are no Parsers or AddIns installed. Only a default RestRequestCollectionRunner is installed which comes with Restler (You can also write your own if you want). Lets install a DevHttpClientRepositoryParser. DevHttpClientRepositoryParser parses the repository JSON file produced by [Dev Http Client Chrome Extension](https://chrome.google.com/webstore/detail/dhc-resthttp-api-client/aejoelaoggembcahagimdiliamlcdmfm?hl=en). You can write your own parsers. To install any AddIn type follwing command from command prompt.
 ```cmd
-nuget install <AddIn Name>
+restler --installAddIn <AddIn Name>
 ```
 For Example
 ```cmd
-nuget install RestApiTester.Parsers.DevHttpClientRepositoryParser
+restler --installAddIn RestApiTester.Parsers.DevHttpClientRepositoryParser
 ```
-![alt text](http://i.imgur.com/cSQRjoS.png "restler install addins")
+![alt text](http://i.imgur.com/LOmrkWw.png "restler install addins")
 
 Run the help command again and you will see that the Restler command line interface now shows DevHttpClientRepositoryParser under Available Parsers.
-![alt text](http://i.imgur.com/df3Gz5x.png "restler help showing addins list")
+![alt text](http://i.imgur.com/sGXxTeC.png "restler help showing addins list")
 
 Check out the list of all the available AddIns [here](#available-addins).
 
@@ -135,26 +133,22 @@ We can get follwoing JSON file after exporting this collection to JSON. Save thi
 ```
 Type following command in the command prompt to run our reddit collection using Restler. Please refer to the [Options](#options) section in this documentation to learn about all the command line options available for Restler.
 ```cmd
-restler -c reddit-collection.json --parser DevHttpClientRepositoryParser
+restler --collection reddit-collection.json --parser DevHttpClientRepositoryParser
 ```
 Restler will run all the REST Requests in reddit-collection.json file. You should see an output similar to the following screenshot.
 
-![alt text](http://i.imgur.com/I2uAbr7.png "restler simple collection run output")
+![alt text](http://i.imgur.com/PEvdhli.png "restler simple collection run output")
 
 ## Options
 
 ```text
 Options:
-
-  -c, --collection     Specify path to REST Request Collection file.
-
-  --parser             Specify parser for parsing collection file.
-
-  --configuration      Specify configuration as a JSON file.
-
-  -e, --environment    Specify one of the environments in your configuration.
-
-  -h, --help           Display this help screen.
+  --collection       Specify path to REST Request Collection file.
+  --parser           Specify parser for parsing collection file.
+  --configuration    Specify configuration as a JSON file.
+  --environment      Specify one of the environments in your configuration.
+  --installAddIn     Specify name of the AddIn to be installed.
+  --help             Displays this help screen.
 ```
 
 ## Available AddIns

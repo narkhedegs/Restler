@@ -31,7 +31,7 @@ namespace Restler
         public string BuildUsage()
         {
             return "Usage:\n" +
-                   "restler -c collection.json --parser DevHttpClientRepositoryParser";
+                   "restler --collection collection.json --parser DevHttpClientRepositoryParser";
         }
 
         public string BuildParserList()

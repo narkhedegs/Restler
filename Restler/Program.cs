@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using NuGet;
 using RestApiTester.Common;
 
 namespace Restler
@@ -15,37 +16,62 @@ namespace Restler
             _serviceProvider = new ServiceProvider();
 
             var additionalHelpTextBuilder = new AdditionalHelpTextBuilder(_serviceProvider);
-            var restlerConfigurationBuilder = _serviceProvider.Get<IRestlerConfigurationBuilder>();
-            var collectionRunConfigurationBuilder = _serviceProvider.Get<IRestRequestCollectionRunConfigurationBuilder>();
 
             var options = new Options(additionalHelpTextBuilder);
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
-                _restlerConfiguration = restlerConfigurationBuilder.Build(options);
-
-                var collectionParser =
-                    _serviceProvider.GetAll<IRestRequestCollectionParser>()
-                        .SingleOrDefault(
-                            parser =>
-                                String.Equals(parser.GetType().Name, _restlerConfiguration.ParserName,
-                                    StringComparison.CurrentCultureIgnoreCase));
-
-                var collectionRunner = _serviceProvider.Get<IRestRequestCollectionRunner>();
-
-                if (collectionParser != null && collectionRunner != null)
+                if (string.IsNullOrEmpty(options.AddInToBeInstalled))
                 {
-                    var collection = collectionParser.Parse(File.ReadAllText(options.CollectionFilePath));
-
-                    collectionRunner.BeforeCollectionRun += CollectionRunnerOnBeforeCollectionRun;
-                    collectionRunner.BeforeRequestRun += CollectionRunnerOnBeforeRequestRun;
-                    collectionRunner.AfterRequestRun += CollectionRunnerOnAfterRequestRun;
-                    collectionRunner.AfterCollectionRun += CollectionRunnerOnAfterCollectionRun;
-
-                    var collectionRunConfiguration = collectionRunConfigurationBuilder.Build(_restlerConfiguration);
-
-                    collectionRunner.Run(collection, collectionRunConfiguration);
+                    RunRestRequestCollection(options);
+                }
+                else
+                {
+                    InstallAddIn(options);
                 }
             }
+        }
+
+        private static void RunRestRequestCollection(Options options)
+        {
+            var restlerConfigurationBuilder = _serviceProvider.Get<IRestlerConfigurationBuilder>();
+            var collectionRunConfigurationBuilder = _serviceProvider.Get<IRestRequestCollectionRunConfigurationBuilder>();
+
+            _restlerConfiguration = restlerConfigurationBuilder.Build(options);
+
+            var collectionParser =
+                _serviceProvider.GetAll<IRestRequestCollectionParser>()
+                    .SingleOrDefault(
+                        parser =>
+                            String.Equals(parser.GetType().Name, _restlerConfiguration.ParserName,
+                                StringComparison.CurrentCultureIgnoreCase));
+
+            var collectionRunner = _serviceProvider.Get<IRestRequestCollectionRunner>();
+
+            if (collectionParser != null && collectionRunner != null)
+            {
+                var collection = collectionParser.Parse(File.ReadAllText(options.CollectionFilePath));
+
+                collectionRunner.BeforeCollectionRun += CollectionRunnerOnBeforeCollectionRun;
+                collectionRunner.BeforeRequestRun += CollectionRunnerOnBeforeRequestRun;
+                collectionRunner.AfterRequestRun += CollectionRunnerOnAfterRequestRun;
+                collectionRunner.AfterCollectionRun += CollectionRunnerOnAfterCollectionRun;
+
+                var collectionRunConfiguration = collectionRunConfigurationBuilder.Build(_restlerConfiguration);
+
+                collectionRunner.Run(collection, collectionRunConfiguration);
+            }
+        }
+
+        private static void InstallAddIn(Options options)
+        {
+            var packageId = options.AddInToBeInstalled;
+		    var packageRepository = PackageRepositoryFactory.Default.CreateRepository("https://packages.nuget.org/api/v2");
+            var addInsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AddIns");
+            var packageManager = new PackageManager(packageRepository, addInsPath);
+        
+            packageManager.InstallPackage(packageId);
+
+            Console.WriteLine("Successfully installed AddIn: {0}", options.AddInToBeInstalled);
         }
 
         private static void CollectionRunnerOnBeforeCollectionRun(object sender,
